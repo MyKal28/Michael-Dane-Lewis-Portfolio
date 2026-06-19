@@ -76,7 +76,7 @@ export default function WhatIDo() {
   return (
     <section
       id="services"
-      className="py-20 md:py-28 px-6 md:px-10 lg:px-16 bg-white"
+      className="pt-12 pb-20 md:pt-16 md:pb-28 px-6 md:px-10 lg:px-16 bg-white"
     >
       <div className="max-w-6xl mx-auto">
         <Reveal>
@@ -87,7 +87,7 @@ export default function WhatIDo() {
             className="section-heading mb-6"
             style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}
           >
-            How I help teams and organizations succeed
+            How I help teams and organizations succeed...
           </h2>
         </Reveal>
         <Reveal delay={140}>

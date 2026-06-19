@@ -1,4 +1,5 @@
 import Reveal from '@/components/Reveal';
+import OpenContactButton from '@/components/OpenContactButton';
 
 const contactLinks = [
   {
@@ -75,12 +76,9 @@ export default function Contact() {
         </div>
 
         <Reveal delay={500}>
-          <a
-            href="mailto:michaeldanelewisbrown@gmail.com"
-            className="inline-flex items-center justify-center bg-white text-navy font-semibold px-8 py-4 rounded-sm hover:bg-gray-100 hover:-translate-y-0.5 transition-all duration-200 text-sm"
-          >
-            Send an Email
-          </a>
+          <OpenContactButton className="inline-flex items-center justify-center bg-white text-navy font-semibold px-8 py-4 rounded-sm hover:bg-gray-100 hover:-translate-y-0.5 transition-all duration-200 text-sm cursor-pointer">
+            Get in Touch
+          </OpenContactButton>
         </Reveal>
       </div>
     </section>

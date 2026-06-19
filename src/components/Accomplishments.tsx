@@ -29,7 +29,7 @@ export default function Accomplishments() {
             className="section-heading mb-14"
             style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}
           >
-            Accomplishments & community
+            Accomplishments & Community
           </h2>
         </Reveal>
 

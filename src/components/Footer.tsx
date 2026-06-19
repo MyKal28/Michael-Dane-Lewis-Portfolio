@@ -7,7 +7,7 @@ export default function Footer() {
           href="#hero"
           className="hover:text-white transition-colors duration-200"
         >
-          Back to top
+          Back to Top
         </a>
       </div>
     </footer>

@@ -13,6 +13,10 @@ const education = [
     degree: 'Associate in Applied Science in Business Administration',
     school: 'Guilford Technical Community College, Greensboro, NC',
   },
+  {
+    degree: 'Associate in Fine Arts in Theatre',
+    school: 'College of The Albemarle, Elizabeth City, NC',
+  },
 ];
 
 const certifications = [
@@ -40,7 +44,7 @@ export default function Education() {
             className="section-heading mb-14"
             style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}
           >
-            Learning & professional development
+            Learning & Professional Development
           </h2>
         </Reveal>
 

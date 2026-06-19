@@ -18,7 +18,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className={`min-h-screen flex items-center bg-white pt-20 pb-16 px-6 md:px-10 lg:px-16 ${
+      className={`min-h-screen flex items-center bg-white pt-20 pb-8 px-6 md:px-10 lg:px-16 ${
         mounted ? 'hero-mounted' : ''
       }`}
     >
@@ -33,23 +33,16 @@ export default function Hero() {
             </div>
 
             <h1
-              className="hero-enter hero-title mb-6"
+              className="hero-enter hero-title mb-8"
               style={{ fontSize: 'clamp(2rem, 4.5vw, 3rem)', transitionDelay: '160ms' }}
             >
               <span className="hero-title-line">Operations &amp;</span>
-              <span className="hero-title-line hero-title-line--accent">Project Management</span>
+              <span className="hero-title-line">Project Management</span>
             </h1>
 
             <p
-              className="hero-enter hero-name mb-7"
-              style={{ fontSize: 'clamp(1.375rem, 2.8vw, 1.875rem)', transitionDelay: '260ms' }}
-            >
-              Michael Dane Lewis
-            </p>
-
-            <p
               className="hero-enter text-gray-600 text-base md:text-lg leading-relaxed mb-8 max-w-xl"
-              style={{ transitionDelay: '360ms' }}
+              style={{ transitionDelay: '280ms' }}
             >
               I help organizations plan, coordinate, and execute — leading cross-functional teams,
               building operational systems, and delivering results across SaaS, EdTech, hospitality,

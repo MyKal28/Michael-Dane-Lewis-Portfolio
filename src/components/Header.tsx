@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import OpenContactButton from '@/components/OpenContactButton';
 
 const navLinks = [
   { label: 'What I Do', href: '#services', id: 'services' },
@@ -74,41 +75,37 @@ export default function Header() {
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 md:px-10 lg:px-16 flex items-center justify-between h-16 md:h-20">
-        <a
-          href="#"
-          className="font-serif text-lg md:text-xl font-semibold text-black tracking-tight"
-        >
-          Michael Lewis
-        </a>
-
-        <nav className="hidden md:flex items-center gap-2">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={`nav-link text-sm font-medium ${
-                activeSection === link.id ? 'nav-link-active' : ''
-              }`}
-              aria-current={activeSection === link.id ? 'page' : undefined}
-            >
-              {link.label}
-            </a>
-          ))}
+      <div className="px-6 md:px-10 lg:px-16">
+        <div className="max-w-6xl mx-auto flex items-center justify-between h-16 md:h-20">
           <a
-            href="#contact"
-            className="ml-4 text-sm font-semibold bg-navy text-white px-5 py-2.5 rounded-sm hover:bg-navy-light transition-colors duration-200"
+            href="#"
+            className="font-serif text-xl md:text-2xl font-semibold text-black tracking-tight"
           >
-            Get in Touch
+            Michael Dane Lewis
           </a>
-        </nav>
 
-        <a
-          href="#contact"
-          className="md:hidden text-sm font-semibold bg-navy text-white px-4 py-2 rounded-sm"
-        >
-          Contact
-        </a>
+          <nav className="hidden md:flex items-center gap-2">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`nav-link text-sm font-medium ${
+                  activeSection === link.id ? 'nav-link-active' : ''
+                }`}
+                aria-current={activeSection === link.id ? 'page' : undefined}
+              >
+                {link.label}
+              </a>
+            ))}
+            <OpenContactButton className="ml-4 text-sm font-semibold bg-navy text-white px-5 py-2.5 rounded-sm hover:bg-navy-light transition-colors duration-200 cursor-pointer">
+              Get in Touch
+            </OpenContactButton>
+          </nav>
+
+          <OpenContactButton className="md:hidden text-sm font-semibold bg-navy text-white px-4 py-2 rounded-sm cursor-pointer">
+            Contact
+          </OpenContactButton>
+        </div>
       </div>
     </header>
   );

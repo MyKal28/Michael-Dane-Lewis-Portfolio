@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { DM_Sans, Source_Serif_4 } from 'next/font/google';
 import './globals.css';
+import ContactModalProvider from '@/components/ContactModalProvider';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -38,9 +39,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${sourceSerif.variable}`} suppressHydrationWarning>
       <body className="antialiased" suppressHydrationWarning>
-        <Header />
-        {children}
-        <Footer />
+        <ContactModalProvider>
+          <Header />
+          {children}
+          <Footer />
+        </ContactModalProvider>
       </body>
     </html>
   );

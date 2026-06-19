@@ -15,7 +15,7 @@ export default function About() {
             className="section-heading mb-10"
             style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}
           >
-            A partner who turns plans into results
+            A partner who turns plans into results...
           </h2>
         </Reveal>
 
@@ -40,7 +40,7 @@ export default function About() {
           <Reveal delay={240}>
             <div className="bg-white border border-gray-200 rounded-sm p-6 transition-shadow duration-300 hover:shadow-md">
               <h3 className="text-sm font-semibold text-black mb-4 uppercase tracking-wide">
-                At a Glance
+                At A Glance
               </h3>
               <dl className="space-y-4 text-sm">
                 <div>

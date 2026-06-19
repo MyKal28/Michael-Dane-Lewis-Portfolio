@@ -56,7 +56,7 @@ export default function Experience() {
             className="section-heading mb-14"
             style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}
           >
-            Professional background
+            Professional Background
           </h2>
         </Reveal>
 
