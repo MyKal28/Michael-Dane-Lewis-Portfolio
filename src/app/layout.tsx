@@ -23,11 +23,33 @@ export const metadata: Metadata = {
   title: 'Michael Dane Lewis — Operations & Project Management',
   description:
     'Operations and project management professional helping teams with project coordination, operational systems, executive support, platform launches, and team leadership across hospitality, SaaS, EdTech, and agencies.',
+  icons: {
+    icon: [
+      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/og-image.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: '/og-image.png',
+  },
   openGraph: {
     title: 'Michael Dane Lewis — Operations & Project Management',
     description:
       'Leading cross-functional teams, building scalable systems, and driving operational excellence.',
     type: 'website',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 512,
+        height: 512,
+        alt: 'Michael Dane Lewis — Operations & Project Management Professional',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Michael Dane Lewis — Operations & Project Management',
+    description:
+      'Leading cross-functional teams, building scalable systems, and driving operational excellence.',
+    images: ['/og-image.png'],
   },
 };
 
