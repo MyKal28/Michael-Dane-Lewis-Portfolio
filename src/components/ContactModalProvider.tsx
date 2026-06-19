@@ -66,6 +66,7 @@ export default function ContactModalProvider({ children }: { children: ReactNode
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const form = event.currentTarget;
 
     if (!FORMSPREE_FORM_ID) {
       setFormState({
@@ -77,7 +78,7 @@ export default function ContactModalProvider({ children }: { children: ReactNode
 
     setFormState({ status: 'submitting', message: '' });
 
-    const formData = new FormData(event.currentTarget);
+    const formData = new FormData(form);
     const payload = {
       name: formData.get('name'),
       email: formData.get('email'),
@@ -95,15 +96,25 @@ export default function ContactModalProvider({ children }: { children: ReactNode
         body: JSON.stringify(payload),
       });
 
-      if (!response.ok) {
-        throw new Error('Unable to send message.');
+      const data = await response.json().catch(() => ({}));
+
+      if (response.ok) {
+        form.reset();
+        setFormState({
+          status: 'success',
+          message: 'Thank you — your message has been sent. Michael will be in touch soon.',
+        });
+        return;
       }
 
-      setFormState({
-        status: 'success',
-        message: 'Thank you — your message has been sent. Michael will be in touch soon.',
-      });
-      event.currentTarget.reset();
+      const errorMessage =
+        typeof data.error === 'string'
+          ? data.error
+          : Array.isArray(data.errors)
+            ? data.errors.map((item: { message?: string }) => item.message).filter(Boolean).join(' ')
+            : 'Something went wrong. Please try again or email directly.';
+
+      setFormState({ status: 'error', message: errorMessage });
     } catch {
       setFormState({
         status: 'error',
@@ -165,13 +176,27 @@ export default function ContactModalProvider({ children }: { children: ReactNode
             </div>
 
             {formState.status === 'success' ? (
-              <div className="px-6 py-10 text-center">
-                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-navy/10 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+              <div className="px-6 py-12 text-center">
+                <div className="success-check-wrap mx-auto mb-6">
+                  <div className="success-check-circle">
+                    <svg
+                      className="success-check-icon"
+                      viewBox="0 0 52 52"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <circle className="success-check-circle-path" cx="26" cy="26" r="24" />
+                      <path
+                        className="success-check-mark"
+                        d="M15 27l7 7 15-16"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
                 </div>
-                <p className="text-gray-700 leading-relaxed mb-6">{formState.message}</p>
+                <h3 className="font-serif text-xl font-semibold text-black mb-3">Message Sent</h3>
+                <p className="text-gray-600 leading-relaxed mb-8 max-w-sm mx-auto">{formState.message}</p>
                 <button
                   type="button"
                   onClick={closeModal}
@@ -258,9 +283,16 @@ export default function ContactModalProvider({ children }: { children: ReactNode
                   <button
                     type="submit"
                     disabled={formState.status === 'submitting'}
-                    className="inline-flex items-center justify-center bg-navy text-white font-semibold px-7 py-3 rounded-md hover:bg-navy-light transition-all text-sm disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="inline-flex items-center justify-center gap-2 bg-navy text-white font-semibold px-7 py-3 rounded-md hover:bg-navy-light transition-all text-sm disabled:opacity-60 disabled:cursor-not-allowed min-w-[9.5rem]"
                   >
-                    {formState.status === 'submitting' ? 'Sending...' : 'Send Message'}
+                    {formState.status === 'submitting' ? (
+                      <>
+                        <span className="form-spinner" aria-hidden="true" />
+                        Sending...
+                      </>
+                    ) : (
+                      'Send Message'
+                    )}
                   </button>
                 </div>
               </form>
